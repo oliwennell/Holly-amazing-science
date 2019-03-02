@@ -16,9 +16,11 @@
             border: darkblue;
             border-style: solid;
             width: 600px;
-            height: auto;
+            height: 300px;
         }
-         
+        #TT {
+            display: none;
+        }
         </style>
           
     </head>
@@ -33,6 +35,7 @@
             <li>So you can learn lots of cool science</li>
             <li>To help you with all the science</li>
             <li>For you to see all the types of science there is</li>
+            <img id="TT" src="images/holly-s test tube.png"></img>
             </ul>
                 <div>
                 <img src="images/scienceequiptmnt.jpg" alt="science equiptment">
@@ -41,14 +44,48 @@
             </canvas>
     </body>   
     <script type="text/javascript">
+    
+    // create some slots to put the bubbles' X and Y positions
+    var x=new Array(100);
+    var y=new Array(100);
+    
+    // put the bubbles in random places to start
+    for (var bubbles=0;bubbles <10; bubbles++) {
+        x[bubbles]=(Math.random()*45)+55;
+        y[bubbles]=Math.random()*200;
+    }
+    
+    // move the bubbles...forever
+    setInterval(draw,10);
+    
+    
+    function draw()
+{
     var c = document.getElementById("HollysCircle");
     var ctx = c.getContext ("2d");
-    for (var bubbles=0;bubbles <100;bubbles++) {
+    ctx.clearRect(0,0, 600,600);
+    
+    // find our test tube image
+    var img = document.getElementById("TT");
+    // draw the test tube image
+    ctx.drawImage (img, 0, 50, 150, 150);
+    
+    for (var bubbles=0;bubbles <10;bubbles++) {
+        
+        //x[bubbles]-=Math.random();
+        y[bubbles]-=Math.random();
+        
+        // if the bubble goes out of the screen, then move it back
+        if (y[bubbles]<0) {
+            y[bubbles]=225;
+        }
+    
         ctx.beginPath ();
-        ctx.arc (Math.random ()*600, Math.random()*200, 25, 0, 2 * Math.PI);
+        ctx.arc (x[bubbles], y[bubbles], 5, 0, 2 * Math.PI);
         ctx.stroke();
         
-    }
+    }    
+}
     </script>
 
 </html>    
