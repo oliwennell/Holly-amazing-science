@@ -13,10 +13,7 @@
             width: 200px;
         } 
         canvas{
-            border: darkblue;
-            border-style: solid;
-            width: 600px;
-            height: 300px;
+
         }
         #TT {
             display: none;
@@ -26,22 +23,52 @@
     </head>
     <body> 
        <h1>   Introduction </h1>
+       <marquee>Dancing with my cat!</marquee>
+       <iframe width="560" height="315" src="https://www.youtube.com/embed/p8rPdDi82Jg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
        <p>    Hello, and my name is Holly and this is my amazing science
               website. This website is going to teach you all the science
               young minds need to know! </p>
               
-              <h2> Why have I created this for you?</h2>
-              <ul>
-            <li>So you can learn lots of cool science</li>
-            <li>To help you with all the science</li>
-            <li>For you to see all the types of science there is</li>
-            <img id="TT" src="images/holly-s test tube.png"></img>
-            </ul>
-                <div>
-                <img src="images/scienceequiptmnt.jpg" alt="science equiptment">
-                </div> 
-            <canvas id="HollysCircle" >
-            </canvas>
+              
+        
+            <table style="width:100%">
+              <tr>
+                <th></th>
+                <th></th> 
+                </tr>
+              <tr>
+                <td>
+                    <h2> Why have I created this for you?</h2>
+                    <ul>
+                      <li>So you can learn lots of cool science.</li>
+                      <li>To help you with all the science.</li>
+                      <li>For you to see all the types of science there is.</li>                      
+                  <img id="TT" src="images/holly-s test tube.png"></img>  
+                    </ul>
+                </td>
+                <td>            
+                    <canvas id="HollysCircle" >
+                    </canvas>
+                </td>
+              </tr>
+              
+            
+              <tr>
+                  <td>
+                        <img src="images/scienceequiptmnt.jpg" alt="science equiptment">                      
+                  </td>
+                  <td>
+                      <p>First, I am going to teach you the first basic science everybody needs to know. It is... Explosions! 
+                      I am not talking about the type of explosion that you get in volcanoes
+                      but the type you can make yourself. </p>
+                  </td>
+              </tr>
+                  
+              
+            </table>
+
+
+             
     </body>   
     <script type="text/javascript">
     
@@ -51,13 +78,18 @@
     
     // put the bubbles in random places to start
     for (var bubbles=0;bubbles <10; bubbles++) {
-        x[bubbles]=(Math.random()*45)+55;
+        x[bubbles]=pickRandomNumberBetween(125, 150);
         y[bubbles]=Math.random()*200;
     }
     
     // move the bubbles...forever
     setInterval(draw,10);
     
+    function pickRandomNumberBetween(start, end) {
+        var result = Math.floor(Math.random()*(end-start+1)+start);
+        console.log(result);
+        return result;
+    }
     
     function draw()
 {
@@ -68,7 +100,7 @@
     // find our test tube image
     var img = document.getElementById("TT");
     // draw the test tube image
-    ctx.drawImage (img, 0, 50, 150, 150);
+    ctx.drawImage (img, 70, 50, 150, 150);
     
     for (var bubbles=0;bubbles <10;bubbles++) {
         
@@ -83,6 +115,7 @@
         ctx.beginPath ();
         ctx.arc (x[bubbles], y[bubbles], 5, 0, 2 * Math.PI);
         ctx.stroke();
+        // Daddy and Holly will work together to write the program
         
     }    
 }
